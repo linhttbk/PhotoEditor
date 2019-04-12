@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.photo.PhotoViewModel"/>
+    </data>
+    <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RelativeLayout
+                android:background="@color/black"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+            <ImageView
+                    android:id="@+id/imvBack"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:padding="@dimen/padding_small"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/tvFolder"
+                    android:drawableRight="@drawable/ic_down"
+                    android:textSize="@dimen/text_size_title"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_toRightOf="@+id/imvBack"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+                android:adapter="@{viewModel.photoAdapter}"
+                android:background="@color/black"
+                android:layout_below="@+id/toolbar"
+                android:id="@+id/rcvList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        <android.support.v7.widget.RecyclerView
+                android:visibility="gone"
+                android:background="@color/white"
+                android:adapter="@{viewModel.adapter}"
+                android:layout_below="@+id/toolbar"
+                android:id="@+id/rcvFolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+</layout>

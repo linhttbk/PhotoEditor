@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.data.model.StickerData"/>
+
+    </data>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/imvSticker"
+                app:icon="@{viewModel.icon}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</layout>

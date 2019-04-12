@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">PhotoEditor</string>
+    <string name="image_lbl_home">Hình ảnh</string>
+    <string name="deviation_lbl_home">Ghép ảnh</string>
+    <string name="camera_lbl_home">Máy ảnh</string>
+
+
+    <string name="ratio_free">Free</string>
+    <string name="ratio_11">1:1</string>
+    <string name="ratio_12">1:2</string>
+    <string name="ratio_23">2:3</string>
+    <string name="ratio_32">3:2</string>
+    <string name="ratio_34">3:4</string>
+    <string name="ratio_43">4:3</string>
+    <string name="ratio_45">4:5</string>
+    <string name="ratio_54">5:4</string>
+    <string name="ratio_916">9:16</string>
+    <string name="ratio_169">16:9</string>
+    <string name="msg_not_granted_permision">Vui lòng cho phép quyền đọc bộ nhớ để có thể sử dụng ứng dụng!</string>
+    <string name="msg_close_snackbar">Đóng</string>
+
+
+    <string name="lbl_crop">Crop</string>
+    <string name="lbl_filter">Lọc</string>
+    <string name="lbl_adjust">Điều chỉnh</string>
+    <string name="lbl_blur">Làm mờ</string>
+    <string name="lbl_brightness">Độ sáng</string>
+    <string name="lbl_blend">Pha trộn</string>
+    <string name="lbl_mirror">Gương</string>
+    <string name="lbl_position">Vị trí</string>
+    <string name="lbl_sticker">Nhãn dán</string>
+    <string name="lbl_add_text">Văn bản</string>
+    <string name="lbl_body_tatoo">Thân hình</string>
+    <string name="lbl_draw">Vẽ</string>
+    <string name="lbl_add_image">Thêm</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.data.model.Photo"/>
+
+    </data>
+    <RelativeLayout
+            android:background="@color/bg_transparent_item_folder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:id="@+id/rlItem"
+                android:padding="@dimen/padding_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    app:imgPath="@{viewModel.thumb}"
+                    android:id="@+id/imvFolder"
+                    android:layout_width="@dimen/size_image_folder_80"
+                    android:layout_height="@dimen/size_image_folder_80"/>
+            <TextView
+                    android:textColor="@color/white"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:layout_toLeftOf="@+id/tvCount"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_toRightOf="@+id/imvFolder"
+                    android:layout_centerVertical="true"
+                    android:text="@{viewModel.folder}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:textColor="@color/white"
+                    android:text="@{``+viewModel.path.size}"
+                    android:id="@+id/tvCount"
+                    android:layout_marginRight="@dimen/margin_big"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+        <View
+                android:layout_below="@+id/rlItem"
+                android:background="@color/bg_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+    </RelativeLayout>
+
+</layout>

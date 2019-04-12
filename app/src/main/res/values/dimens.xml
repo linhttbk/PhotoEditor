@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="size_image_folder_80">80dp</dimen>
+    <dimen name="height_rcv_130">130dp</dimen>
+    <dimen name="min_height_250">250dp</dimen>
+</resources>

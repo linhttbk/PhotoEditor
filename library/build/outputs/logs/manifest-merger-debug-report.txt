@@ -1,0 +1,37 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+	package
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:11-54
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+	android:versionCode
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml:2:1-57
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+uses-sdk
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		ADDED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml
+		INJECTED from D:\KotlinTranning\PhotoEditor\library\src\main\AndroidManifest.xml

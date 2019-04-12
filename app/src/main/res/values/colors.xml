@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bg_button_home">#192525</color>
+    <color name="bg_button_home_selector">#0B1111</color>
+    <color name="black">#000000</color>
+    <color name="bg_transparent_item_folder">#BE000000</color>
+    <color name="bg_divider">#cccccc</color>
+    <color name="active_blue">#349AFF</color>
+</resources>
