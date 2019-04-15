@@ -12,6 +12,8 @@ import com.linhtt.photoeditor.R
 import com.linhtt.photoeditor.custom.CenterLayoutManager
 import com.linhtt.photoeditor.custom.ScrollPositionSnap
 import com.linhtt.photoeditor.data.model.Ratio
+import com.linhtt.photoeditor.view.editor.EditActivity
+import com.linhtt.photoeditor.view.editor.EditorViewModel
 import com.linhtt.photoeditor.view.home.HomeViewModel
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_crop.*
@@ -25,7 +27,7 @@ class CropFragment :
     BaseRecycleViewAdapter.ItemClickListener, CropImageView.OnCropImageCompleteListener {
 
 
-    val homeViewModel: HomeViewModel by sharedViewModel()
+    val homeViewModel: EditorViewModel by sharedViewModel()
     var path: String = ""
     var cropPath = ""
 
@@ -107,5 +109,10 @@ class CropFragment :
         } else {
             showToast(result!!.error.toString())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as EditActivity).showStickerView()
     }
 }

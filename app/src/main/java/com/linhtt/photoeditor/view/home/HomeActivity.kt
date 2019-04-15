@@ -10,13 +10,39 @@ import com.example.core.permission.Permission
 import com.example.core.permission.RxRequestPermission
 import com.linhtt.photoeditor.R
 import com.linhtt.photoeditor.view.photo.PhotoFragment
+import com.sticker.Sticker
+import com.sticker.StickerView
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_home.*
 
 
 class HomeActivity :
     BaseActivity<HomeViewModel, com.linhtt.photoeditor.databinding.ActivityHomeBinding>(HomeViewModel::class),
-    View.OnClickListener {
+    View.OnClickListener,StickerView.OnStickerOperationListener{
+    override fun onStickerAdded(sticker: Sticker) {
+
+    }
+
+    override fun onStickerClicked(sticker: Sticker) {
+    }
+
+    override fun onStickerDeleted(sticker: Sticker) {
+    }
+
+    override fun onStickerDragFinished(sticker: Sticker) {
+    }
+
+    override fun onStickerTouchedDown(sticker: Sticker) {
+    }
+
+    override fun onStickerZoomFinished(sticker: Sticker) {
+    }
+
+    override fun onStickerFlipped(sticker: Sticker) {
+    }
+
+    override fun onStickerDoubleTapped(sticker: Sticker) {
+    }
 
     override fun getLayoutResourceId(): Int = R.layout.activity_home
     private var disposable: Disposable? = null
@@ -77,6 +103,8 @@ class HomeActivity :
 
 
     }
+
+
 
     override fun onDestroy() {
         if (disposable != null && !disposable!!.isDisposed) {

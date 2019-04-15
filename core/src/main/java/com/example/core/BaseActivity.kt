@@ -23,10 +23,15 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
     AppCompatActivity(), BaseConstant, ViewContract {
     var fragmentHelper: FragmentHelper? = null
     lateinit var binding: DB
-
     val PERMISSIONS_REQUEST_CODE = 42
 
-    private val baseViewModel: VM by viewModelByClass(classModel)
+//    private val baseViewModel: VM by viewModelByClass(classModel)
+    val baseViewModel: VM  by lazy {
+        initViewModel().value
+    }
+    open fun initViewModel(): Lazy<VM> {
+        return viewModelByClass(classModel)
+    }
 
     private var mSubjects: MutableMap<String, PublishSubject<Permission>> = HashMap()
 
@@ -46,6 +51,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
     }
 
     abstract fun getRoot(): Int
+
     override fun onDestroy() {
         super.onDestroy()
         bus.unregister(this)
@@ -63,8 +69,13 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
 
     }
 
+
     override fun switchFragment(fragment: Fragment, hasAnim: Boolean) {
         fragmentHelper!!.switchFragment(fragment, hasAnim)
+    }
+
+    override fun switchFragment(fragment: Fragment, root: Int, hasAnim: Boolean) {
+        fragmentHelper?.switchFragment(fragment,root,hasAnim)
     }
 
     override fun showDialogLoading(isShow: Boolean) {
@@ -75,6 +86,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
         swrBase.isEnabled = isEnable
         swrBase.isRefreshing = isEnable
     }
+
     @TargetApi(Build.VERSION_CODES.M)
     fun requestPermissions(@NonNull permissions: Array<String>) {
         requestPermissions(permissions, PERMISSIONS_REQUEST_CODE)
@@ -132,7 +144,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding>(private va
 
     @TargetApi(Build.VERSION_CODES.M)
     fun isRevoked(permission: String): Boolean {
-        return packageManager.isPermissionRevokedByPolicy(permission,packageName)
+        return packageManager.isPermissionRevokedByPolicy(permission, packageName)
     }
 
     fun getSubjectByPermission(permission: String): PublishSubject<Permission>? {

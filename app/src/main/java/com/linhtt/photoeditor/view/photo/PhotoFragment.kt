@@ -1,6 +1,8 @@
 package com.linhtt.photoeditor.view.photo
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -9,8 +11,7 @@ import com.example.core.BaseFragment
 import com.example.core.BaseRecycleViewAdapter
 import com.example.core.custom.VerticalSpacesItemDecoration
 import com.linhtt.photoeditor.R
-import com.linhtt.photoeditor.view.crop.CropFragment
-import com.linhtt.photoeditor.view.editor.PhotoEditorFragment
+import com.linhtt.photoeditor.view.editor.EditActivity
 import kotlinx.android.synthetic.main.fragment_photo.*
 
 
@@ -52,7 +53,11 @@ class PhotoFragment :
         viewModel.photoAdapter.setOnItemClickListener(object : BaseRecycleViewAdapter.ItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 val path = viewModel.photoAdapter.getItem(position)
-                switchFragment(PhotoEditorFragment.newInstance(path), true)
+                val intent = Intent(context, EditActivity::class.java)
+                val bundle = Bundle()
+                bundle.putString("path", path)
+                intent.putExtras(bundle)
+                startActivity(intent)
             }
         })
 
@@ -70,7 +75,7 @@ class PhotoFragment :
 
 
                 } else {
-                    android.os.Handler().post{
+                    android.os.Handler().post {
                         hideFolderList()
                     }
 

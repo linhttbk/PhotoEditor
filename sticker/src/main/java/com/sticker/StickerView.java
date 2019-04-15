@@ -189,13 +189,19 @@ public class StickerView extends FrameLayout {
     protected void drawStickers(Canvas canvas) {
         for (int i = 0; i < stickers.size(); i++) {
             Sticker sticker = stickers.get(i);
-            if (sticker != null) {
+            if (sticker != null && sticker.isLocked() ) {
+                sticker.draw(canvas);
+            }
+        }
+        //Draw current sticker
+        for (int i = 0; i < stickers.size(); i++) {
+            Sticker sticker = stickers.get(i);
+            if (sticker != null && !sticker.isLocked() ) {
                 sticker.draw(canvas);
             }
         }
 
         if (handlingSticker != null && !handlingSticker.isLocked() && (showBorder || showIcons)) {
-
             getStickerPoints(handlingSticker, bitmapPoints);
 
             float x1 = bitmapPoints[0];
@@ -332,7 +338,14 @@ public class StickerView extends FrameLayout {
             handlingSticker = findHandlingSticker();
         }
 
-        if (handlingSticker != null) {
+        if (handlingSticker == null && onStickerOperationListener != null && stickers.size() > 0) {
+            for (Sticker sticker : stickers) {
+                sticker.setLocked(true);
+            }
+            return true;
+        }
+
+        if (handlingSticker != null && onStickerOperationListener != null) {
             handlingSticker.setLocked(false);
             onStickerOperationListener.onStickerTouchedDown(handlingSticker);
             downMatrix.set(handlingSticker.getMatrix());
@@ -349,6 +362,7 @@ public class StickerView extends FrameLayout {
         return true;
     }
 
+
     protected void onTouchUp(@NonNull MotionEvent event) {
         long currentTime = SystemClock.uptimeMillis();
 
@@ -360,13 +374,20 @@ public class StickerView extends FrameLayout {
                 && Math.abs(event.getX() - downX) < touchSlop
                 && Math.abs(event.getY() - downY) < touchSlop
                 && handlingSticker != null) {
-            currentMode = ActionMode.CLICK;
-            if (onStickerOperationListener != null) {
-                onStickerOperationListener.onStickerClicked(handlingSticker);
-            }
-            if (currentTime - lastClickTime < minClickDelayTime) {
+
+            if (handlingSticker != null) {
+                currentMode = ActionMode.CLICK;
                 if (onStickerOperationListener != null) {
-                    onStickerOperationListener.onStickerDoubleTapped(handlingSticker);
+                    onStickerOperationListener.onStickerClicked(handlingSticker);
+                }
+                if (currentTime - lastClickTime < minClickDelayTime) {
+                    if (onStickerOperationListener != null) {
+                        onStickerOperationListener.onStickerDoubleTapped(handlingSticker);
+                    }
+                }
+            } else if (onStickerOperationListener != null && stickers.size() > 0) {
+                for (Sticker sticker : stickers) {
+                    sticker.setLocked(true);
                 }
             }
         }
@@ -379,6 +400,7 @@ public class StickerView extends FrameLayout {
 
         currentMode = ActionMode.NONE;
         lastClickTime = currentTime;
+        invalidate();
     }
 
     protected void handleCurrentMode(@NonNull MotionEvent event) {
