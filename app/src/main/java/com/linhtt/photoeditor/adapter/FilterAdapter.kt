@@ -27,6 +27,7 @@ class FilterAdapter(val items: ArrayList<Filter>) : BaseRecycleViewAdapter<Filte
         BaseViewHolder(binding.root) {
         override fun onBindingData(position: Int) {
             binding.filter = getItem(position)
+            binding.executePendingBindings()
         }
 
     }

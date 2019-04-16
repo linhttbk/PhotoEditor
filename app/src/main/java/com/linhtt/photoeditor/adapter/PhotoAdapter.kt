@@ -40,6 +40,7 @@ class PhotoAdapter(var items: ArrayList<String>) : BaseRecycleViewAdapter<String
 
         override fun onBindingData(position: Int) {
             (binding as com.linhtt.photoeditor.databinding.ItemPhotoBinding).path = getItem(position)
+            binding.executePendingBindings()
         }
     }
 }

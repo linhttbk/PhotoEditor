@@ -20,6 +20,8 @@ import com.sticker.Sticker
 import com.sticker.StickerView
 import jp.co.cyberagent.android.gpuimage.GPUImage
 import jp.co.cyberagent.android.gpuimage.LoadImageCallback
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilterGroup
 import kotlinx.android.synthetic.main.activity_edit.*
 import org.koin.android.viewmodel.ext.android.viewModelByClass
 import org.koin.core.parameter.parametersOf
@@ -184,5 +186,23 @@ class EditActivity :
 
     private fun showAdjustmentTool() {
         switchFragment(FragmentAdjustment.newInstance(), R.id.tool_layout, false)
+    }
+
+    fun switchFilterTo(filter: GPUImageFilter) {
+        if (gpuImage.filter == null || gpuImage.filter.javaClass != filter.javaClass) {
+            Log.e("Change Filter", filter.javaClass.simpleName)
+            gpuImage.filter = filter
+        }
+    }
+
+    fun applyAdjust() {
+        gpuImage.requestRender()
+    }
+
+    fun applyFilterGroup(group: GPUImageFilterGroup) {
+        if (group.filters.size > 0) {
+            gpuImage.filter = group
+            gpuImage.requestRender()
+        }
     }
 }

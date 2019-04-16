@@ -31,6 +31,7 @@ class FolderAdapter(var items: ArrayList<Photo>) : BaseRecycleViewAdapter<Photo>
     inner class ViewHolder(private val binding: ViewDataBinding) : BaseViewHolder(binding.root) {
         override fun onBindingData(position: Int) {
             (binding as com.linhtt.photoeditor.databinding.ItemListFolderBinding).viewModel = getItem(position)
+            binding.executePendingBindings()
         }
     }
 }

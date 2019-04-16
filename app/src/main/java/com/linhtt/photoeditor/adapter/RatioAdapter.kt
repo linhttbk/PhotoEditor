@@ -24,12 +24,9 @@ class RatioAdapter(private val items: ArrayList<Ratio>) : BaseRecycleViewAdapter
         BaseViewHolder(binding.root) {
         override fun onBindingData(position: Int) {
             binding.ratio = getItem(position)
+            binding.executePendingBindings()
         }
 
-    }
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        super.onBindViewHolder(holder, position)
     }
 
     fun updateSelected(position: Int) {
