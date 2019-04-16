@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.sticker.StickerViewModel"/>
+    </data>
+    <RelativeLayout
+            android:background="@color/black"
+            android:id="@+id/bottomEditor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/imvClose"
+                android:src="@drawable/ic_close"
+                android:padding="@dimen/padding_large"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabLayout
+                app:viewPager="@{pagerSticker}"
+                android:id="@+id/tabSticker"
+                android:layout_alignTop="@+id/imvClose"
+                android:layout_alignBottom="@+id/imvClose"
+                android:layout_toLeftOf="@+id/imvApply"
+                android:layout_toRightOf="@+id/imvClose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        </android.support.design.widget.TabLayout>
+        <ImageView
+                android:id="@+id/imvApply"
+                android:src="@drawable/ic_apply"
+                android:padding="@dimen/padding_large"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <android.support.v4.view.ViewPager
+                android:id="@+id/pagerSticker"
+                android:adapter="@{viewModel.stickerAdapter}"
+                android:layout_below="@+id/imvClose"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/min_height_250">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+</layout>

@@ -15,25 +15,26 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.core.permission.Permission
 import io.reactivex.subjects.PublishSubject
-import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModelByClass
+import kotlin.collections.set
 import kotlin.reflect.KClass
+
 const val PERMISSIONS_REQUEST_CODE = 42
+
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private val classModel: KClass<VM>) : Fragment(),
     BaseConstant, ViewContract {
-    val baseViewModel:VM  by lazy {
-      initViewModel().value
+    val baseViewModel: VM  by lazy {
+        initViewModel().value
     }
+    private var isRegistered = false
     private var mSubjects: MutableMap<String, PublishSubject<Permission>> = HashMap()
     protected lateinit var mBinding: DB
 
-   open fun initViewModel():Lazy<VM>{
-       return viewModelByClass(classModel)
+    open fun initViewModel(): Lazy<VM> {
+        return viewModelByClass(classModel)
     }
 
-    open fun Hello(){
 
-    }
     override fun onAttach(context: Context?) {
         super.onAttach(context)
     }
@@ -54,13 +55,18 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
 
     override fun onResume() {
         super.onResume()
-        bus.register(this)
-
+        if (!isRegistered) {
+            bus.register(this)
+            isRegistered = !isRegistered
+        }
     }
 
     override fun onDetach() {
         super.onDetach()
-        bus.unregister(this)
+        if (isRegistered) {
+            bus.unregister(this)
+            isRegistered = !isRegistered
+        }
     }
 
     open fun initView() {
@@ -76,24 +82,32 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(private va
 
     override fun switchFragment(fragment: Fragment, hasAnim: Boolean) {
         if (activity != null) {
-            (activity as BaseActivity<VM, DB>).switchFragment(fragment, hasAnim)
+            (activity as BaseActivity<*, *>).switchFragment(fragment, hasAnim)
+
+        }
+    }
+
+    override fun switchFragment(fragment: Fragment, root: Int, hasAnim: Boolean) {
+        if (activity != null) {
+            (activity as BaseActivity<*, *>).switchFragment(fragment, root, hasAnim)
 
         }
     }
 
     override fun enableRefresh(isEnable: Boolean) {
         if (activity != null) {
-            (activity as BaseActivity<VM, DB>).enableRefresh(isEnable)
+            (activity as BaseActivity<*, *>).enableRefresh(isEnable)
 
         }
     }
 
     override fun showDialogLoading(isShow: Boolean) {
         if (activity != null) {
-            (activity as BaseActivity<VM, DB>).showDialogLoading(isShow)
+            (activity as BaseActivity<*, *>).showDialogLoading(isShow)
 
         }
     }
+
     @TargetApi(Build.VERSION_CODES.M)
     fun requestPermissions(@NonNull permissions: Array<String>) {
         requestPermissions(permissions, PERMISSIONS_REQUEST_CODE)

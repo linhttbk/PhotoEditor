@@ -59,6 +59,7 @@ public class GPUImageView extends FrameLayout {
 
     private GPUImage gpuImage;
 
+
     public void setShowLoading(boolean showLoading) {
         isShowLoading = showLoading;
     }

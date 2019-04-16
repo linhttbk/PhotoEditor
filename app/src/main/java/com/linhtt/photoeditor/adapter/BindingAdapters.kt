@@ -14,7 +14,6 @@ import com.linhtt.photoeditor.R
 import com.linhtt.photoeditor.data.model.Filter
 import com.linhtt.photoeditor.data.model.Ratio
 import com.linhtt.photoeditor.view.editor.EditorViewModel
-import com.linhtt.photoeditor.view.home.HomeViewModel
 import jp.co.cyberagent.android.gpuimage.GPUImageView
 import java.io.File
 
@@ -30,14 +29,10 @@ fun setGpuPath(gpuImageView: GPUImageView, path: String) {
     gpuImageView.setImage(File(path))
 }
 
-@BindingAdapter(value = ["viewModel", "shareModel"])
-fun setData(gpuImageView: GPUImageView, viewModel: EditorViewModel, shareModel: HomeViewModel) {
-    val filePath = shareModel.loadBitmapFromCache()
-    if (filePath != null) {
-        gpuImageView.setImage(File(filePath))
-    } else {
-        gpuImageView.setImage(File(viewModel.path))
-    }
+@BindingAdapter("viewModel")
+fun setData(gpuImageView: GPUImageView, viewModel: EditorViewModel) {
+    val filePath = viewModel.loadBitmapFromCache()
+    gpuImageView.setImage(File(filePath))
 
 }
 

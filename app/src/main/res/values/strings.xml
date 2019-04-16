@@ -33,4 +33,11 @@
     <string name="lbl_body_tatoo">Thân hình</string>
     <string name="lbl_draw">Vẽ</string>
     <string name="lbl_add_image">Thêm</string>
+    <!--adjust-->
+    <string name="adjust_brightness_lbl">Độ sáng</string>
+    <string name="adjust_contrast_lbl">Tương phản</string>
+    <string name="adjust_warm_lbl">Ấm áp</string>
+    <string name="adjust_saturation_lbl">Saturation</string>
+    <string name="adjust_hue_lbl">Hue</string>
+    <string name="adjust_sharpen_lbl">Sharpen</string>
 </resources>
