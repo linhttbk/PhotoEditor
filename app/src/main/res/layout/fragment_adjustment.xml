@@ -4,16 +4,29 @@
         <variable name="viewModel" type="com.linhtt.photoeditor.view.adjust.AdjustViewModel"/>
     </data>
     <RelativeLayout
+            android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+        <SeekBar
+                android:splitTrack="false"
+                android:layout_marginRight="@dimen/margin_big"
+                android:layout_marginLeft="@dimen/margin_big"
+                android:progressDrawable="@drawable/edit_seekbar_progress"
+                android:id="@+id/seekBar"
+                android:thumbOffset="5dp"
+                android:thumb="@drawable/custom_thumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         <ImageView
+                android:layout_below="@+id/seekBar"
                 android:id="@+id/imvClose"
                 android:src="@drawable/ic_close"
                 android:padding="@dimen/padding_large"
-                android:layout_alignParentTop="true"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <ImageView
+                android:layout_below="@+id/seekBar"
                 android:id="@+id/imvApply"
                 android:src="@drawable/ic_apply"
                 android:padding="@dimen/padding_large"
@@ -21,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <android.support.v7.widget.RecyclerView
+                android:layout_centerVertical="true"
                 android:adapter="@{viewModel.adapter}"
                 android:id="@+id/rcvAdjust"
                 android:layout_below="@+id/imvClose"

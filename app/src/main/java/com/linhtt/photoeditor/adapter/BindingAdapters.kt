@@ -3,6 +3,7 @@ package com.linhtt.photoeditor.adapter
 import android.databinding.BindingAdapter
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.linhtt.photoeditor.R
+import com.linhtt.photoeditor.data.model.Adjustment
 import com.linhtt.photoeditor.data.model.Filter
 import com.linhtt.photoeditor.data.model.Ratio
 import com.linhtt.photoeditor.view.editor.EditorViewModel
@@ -75,6 +77,30 @@ fun setIconRes(imv: ImageView, filter: Filter) {
 fun setIconRes(tvTitle: TextView, filter: Filter) {
     tvTitle.setText(filter.title)
     tvTitle.setTextColor(ContextCompat.getColor(tvTitle.context, R.color.white))
+}
+
+@BindingAdapter("adjustItem")
+fun setAdjustIcon(imv: ImageView, adjustment: Adjustment) {
+    imv.setImageResource(adjustment.icon)
+    if(adjustment.isSelected){
+
+        imv.setImageResource(adjustment.activeIcon)
+    }else{
+
+        imv.setImageResource(adjustment.icon)
+    }
+
+
+}
+
+@BindingAdapter("adjustItem")
+fun setAdjustTitle(tvTitle: TextView, adjustment: Adjustment) {
+    tvTitle.setText(adjustment.title)
+   if(adjustment.isSelected) {
+   tvTitle.setTextColor(ContextCompat.getColor(tvTitle.context, R.color.active_blue))
+   }else{
+       tvTitle.setTextColor(ContextCompat.getColor(tvTitle.context,R.color.white))
+   }
 }
 
 @BindingAdapter("viewPager")

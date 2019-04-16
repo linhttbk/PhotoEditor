@@ -36,6 +36,7 @@ class StickerAdapter(var items: ArrayList<StickerData>) : BaseRecycleViewAdapter
 
         override fun onBindingData(position: Int) {
             binding.viewModel = getItem(position)
+            binding.executePendingBindings()
         }
 
     }
