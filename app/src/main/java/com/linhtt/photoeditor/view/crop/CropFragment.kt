@@ -113,6 +113,6 @@ class CropFragment :
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as EditActivity).showStickerView()
+        (activity as EditActivity).showEditorView(false)
     }
 }

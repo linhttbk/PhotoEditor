@@ -147,11 +147,15 @@ public class StickerView extends FrameLayout {
                 ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_flip_white_18dp),
                 BitmapStickerIcon.RIGHT_TOP);
         flipIcon.setIconEvent(new FlipHorizontallyEvent());
-
+        BitmapStickerIcon editIcon = new BitmapStickerIcon(
+                ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_edit_text),
+                BitmapStickerIcon.LEFT_BOTTOM);
+        editIcon.setIconEvent(new EditIconEvent());
         icons.clear();
         icons.add(deleteIcon);
         icons.add(zoomIcon);
         icons.add(flipIcon);
+        icons.add(editIcon);
     }
 
 
@@ -179,6 +183,15 @@ public class StickerView extends FrameLayout {
         }
     }
 
+    public void lockAllSticker() {
+        for (int i = 0; i < stickers.size(); i++) {
+            if (!stickers.get(i).isLocked()) {
+                stickers.get(i).setLocked(true);
+                break;
+            }
+        }
+    }
+
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
@@ -189,14 +202,14 @@ public class StickerView extends FrameLayout {
     protected void drawStickers(Canvas canvas) {
         for (int i = 0; i < stickers.size(); i++) {
             Sticker sticker = stickers.get(i);
-            if (sticker != null && sticker.isLocked() ) {
+            if (sticker != null && sticker.isLocked()) {
                 sticker.draw(canvas);
             }
         }
         //Draw current sticker
         for (int i = 0; i < stickers.size(); i++) {
             Sticker sticker = stickers.get(i);
-            if (sticker != null && !sticker.isLocked() ) {
+            if (sticker != null && !sticker.isLocked()) {
                 sticker.draw(canvas);
             }
         }
@@ -227,23 +240,29 @@ public class StickerView extends FrameLayout {
                     BitmapStickerIcon icon = icons.get(i);
                     switch (icon.getPosition()) {
                         case BitmapStickerIcon.LEFT_TOP:
-
                             configIconMatrix(icon, x1, y1, rotation);
+                            icon.draw(canvas, borderPaint);
                             break;
 
                         case BitmapStickerIcon.RIGHT_TOP:
                             configIconMatrix(icon, x2, y2, rotation);
+                            icon.draw(canvas, borderPaint);
                             break;
 
                         case BitmapStickerIcon.LEFT_BOTTOM:
                             configIconMatrix(icon, x3, y3, rotation);
+                            if (handlingSticker instanceof TextSticker) {
+                                icon.draw(canvas, borderPaint);
+                            }
                             break;
 
                         case BitmapStickerIcon.RIGHT_BOTOM:
                             configIconMatrix(icon, x4, y4, rotation);
+                            icon.draw(canvas, borderPaint);
                             break;
                     }
-                    icon.draw(canvas, borderPaint);
+
+
                 }
             }
         }
@@ -902,6 +921,14 @@ public class StickerView extends FrameLayout {
         return this;
     }
 
+    public void onClickEdit(){
+        if(onStickerOperationListener!=null) {
+            Sticker sticker = findHandlingSticker();
+            if(sticker!=null)
+            onStickerOperationListener.onClickEdit(sticker);
+        }
+    }
+
     @NonNull
     public StickerView setOnStickerOperationListener(
             @Nullable OnStickerOperationListener onStickerOperationListener) {
@@ -946,6 +973,8 @@ public class StickerView extends FrameLayout {
         void onStickerFlipped(@NonNull Sticker sticker);
 
         void onStickerDoubleTapped(@NonNull Sticker sticker);
+
+        void onClickEdit(@NonNull Sticker sticker);
     }
 
 }

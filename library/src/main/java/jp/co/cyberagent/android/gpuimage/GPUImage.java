@@ -57,6 +57,11 @@ public class GPUImage {
     private GLSurfaceView glSurfaceView;
     private GLTextureView glTextureView;
     private GPUImageFilter filter;
+
+    public Bitmap getCurrentBitmap() {
+        return currentBitmap;
+    }
+
     private Bitmap currentBitmap;
     private ScaleType scaleType = ScaleType.CENTER_CROP;
 
@@ -333,6 +338,7 @@ public class GPUImage {
         return getBitmapWithFilterApplied(bitmap, false);
     }
 
+
     /**
      * Gets the given bitmap with current filter applied as a Bitmap.
      *
@@ -382,6 +388,13 @@ public class GPUImage {
         requestRender();
 
         return result;
+    }
+
+
+    public Bitmap getBitmapWithFilter(GPUImageFilter filter) {
+        setFilter(filter);
+        return getBitmapWithFilterApplied();
+
     }
 
     /**
@@ -629,7 +642,7 @@ public class GPUImage {
 
         @Override
         protected Bitmap doInBackground(Void... params) {
-            if(callback!=null){
+            if (callback != null) {
                 callback.onStartLoading();
             }
             if (renderer != null && renderer.getFrameWidth() == 0) {
@@ -649,10 +662,10 @@ public class GPUImage {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-            if(callback!=null){
-                if(bitmap!=null){
+            if (callback != null) {
+                if (bitmap != null) {
                     callback.onLoadingSuccess();
-                }else {
+                } else {
                     callback.onLoadError();
                 }
 

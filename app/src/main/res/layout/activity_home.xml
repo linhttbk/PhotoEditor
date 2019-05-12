@@ -8,18 +8,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <RelativeLayout
-                android:padding="@dimen/padding_small"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <ImageView
-                    android:id="@+id/imvSetting"
-                    android:padding="@dimen/padding_normal"
-                    android:src="@drawable/ic_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
         <LinearLayout
                 android:layout_marginRight="@dimen/margin_normal"
                 android:layout_marginLeft="@dimen/margin_normal"
@@ -55,31 +43,6 @@
                         android:layout_height="wrap_content"/>
             </RelativeLayout>
             <RelativeLayout
-                    android:id="@+id/btnDeviation"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_button_home_selector"
-                    android:padding="@dimen/padding_large"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/ic2"
-                        android:src="@drawable/ic_deviation_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/text_size_normal"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="@dimen/margin_normal"
-                        android:gravity="center"
-                        android:text="@string/deviation_lbl_home"
-                        android:layout_below="@+id/ic2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-            </RelativeLayout>
-            <RelativeLayout
                     android:id="@+id/btnCamera"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/bg_button_home_selector"
@@ -101,6 +64,31 @@
                         android:gravity="center"
                         android:text="@string/camera_lbl_home"
                         android:layout_below="@+id/ic3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/btnDeviation"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_button_home_selector"
+                    android:padding="@dimen/padding_large"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/ic2"
+                        android:src="@drawable/ic_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:gravity="center"
+                        android:text="@string/setting_lbl_home"
+                        android:layout_below="@+id/ic2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </RelativeLayout>

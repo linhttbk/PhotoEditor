@@ -18,15 +18,16 @@ package jp.co.cyberagent.android.gpuimage.filter;
 
 import android.annotation.SuppressLint;
 import android.opengl.GLES20;
+import android.util.Log;
+import jp.co.cyberagent.android.gpuimage.util.Rotation;
+import jp.co.cyberagent.android.gpuimage.util.TextureRotationUtil;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-
-import jp.co.cyberagent.android.gpuimage.util.Rotation;
-import jp.co.cyberagent.android.gpuimage.util.TextureRotationUtil;
 
 import static jp.co.cyberagent.android.gpuimage.GPUImageRenderer.CUBE;
 import static jp.co.cyberagent.android.gpuimage.util.TextureRotationUtil.TEXTURE_NO_ROTATION;
@@ -89,6 +90,17 @@ public class GPUImageFilterGroup extends GPUImageFilter {
         }
         filters.add(aFilter);
         updateMergedFilters();
+    }
+
+    public void removeBlendFilter() {
+        for (int i = 0 ; i < filters.size() ; i++) {
+            GPUImageFilter aFilter = filters.get(i);
+            if (aFilter instanceof GPUImageTwoInputFilter) {
+                filters.remove(aFilter);
+                updateMergedFilters();
+            }
+        }
+
     }
 
     /*

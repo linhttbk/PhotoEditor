@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter;
 
 public class GPUImageColorFilter extends GPUImageFilter {
-    public static final String BRIGHTNESS_FRAGMENT_SHADER = "" +
+    public static final String COLOR_FILTER_FRAGMENT_SHADER = "" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             " uniform sampler2D inputImageTexture;\n" +
@@ -31,7 +31,7 @@ public class GPUImageColorFilter extends GPUImageFilter {
     }
 
     public GPUImageColorFilter(final float[] colorMatrix, final float[] colorOffset) {
-        super(NO_FILTER_VERTEX_SHADER, BRIGHTNESS_FRAGMENT_SHADER);
+        super(NO_FILTER_VERTEX_SHADER, COLOR_FILTER_FRAGMENT_SHADER);
     }
 
 
@@ -48,7 +48,7 @@ public class GPUImageColorFilter extends GPUImageFilter {
         changeMatrix(new float[]{1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
-                0, 0, 0, 1}, new float[]{0.1f, 0, 0, 0});
+                0, 0, 0, 1}, new float[]{0f, 0, 0, 0});
 
     }
 

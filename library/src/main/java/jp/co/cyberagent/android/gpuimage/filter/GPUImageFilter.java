@@ -24,6 +24,7 @@ import android.opengl.GLES20;
 import java.io.InputStream;
 import java.nio.FloatBuffer;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 import jp.co.cyberagent.android.gpuimage.util.OpenGlUtils;
 
@@ -136,7 +137,11 @@ public class GPUImageFilter {
 
     protected void runPendingOnDrawTasks() {
         while (!runOnDraw.isEmpty()) {
-            runOnDraw.removeFirst().run();
+            try {
+                runOnDraw.removeFirst().run();
+            }catch (NoSuchElementException ex){
+                ex.printStackTrace();
+            }
         }
     }
 

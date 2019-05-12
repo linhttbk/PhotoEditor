@@ -19,16 +19,14 @@ package jp.co.cyberagent.android.gpuimage;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.opengl.GLSurfaceView;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.*;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,14 +34,13 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter;
+import jp.co.cyberagent.android.gpuimage.util.Rotation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.concurrent.Semaphore;
-
-import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter;
-import jp.co.cyberagent.android.gpuimage.util.Rotation;
 
 import static jp.co.cyberagent.android.gpuimage.GPUImage.SURFACE_TYPE_SURFACE_VIEW;
 import static jp.co.cyberagent.android.gpuimage.GPUImage.SURFACE_TYPE_TEXTURE_VIEW;
@@ -100,6 +97,7 @@ public class GPUImageView extends FrameLayout {
             surfaceView = new GPUImageGLSurfaceView(context, attrs);
             gpuImage.setGLSurfaceView((GLSurfaceView) surfaceView);
         }
+
         addView(surfaceView);
     }
 
@@ -417,7 +415,8 @@ public class GPUImageView extends FrameLayout {
         final int height = surfaceView.getMeasuredHeight();
 
         // Take picture on OpenGL thread
-        final Bitmap resultBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        final Bitmap resultBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        final Bitmap resultBitmap = loadBitmapFromView();
         gpuImage.runOnGLThread(new Runnable() {
             @Override
             public void run() {
@@ -429,6 +428,13 @@ public class GPUImageView extends FrameLayout {
         waiter.acquire();
 
         return resultBitmap;
+    }
+
+    private Bitmap loadBitmapFromView() {
+        Bitmap bitmap = Bitmap.createBitmap(this.getMeasuredWidth(), this.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        this.draw(canvas);
+        return bitmap;
     }
 
     /**

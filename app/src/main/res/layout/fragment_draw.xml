@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.draw.DrawViewModel"/>
+    </data>
+    <RelativeLayout
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/imvClose"
+                android:src="@drawable/ic_close"
+                android:padding="@dimen/padding_large"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <ImageView
+                android:id="@+id/imvApply"
+                android:src="@drawable/ic_apply"
+                android:padding="@dimen/padding_large"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:weightSum="2"
+
+                      android:layout_alignTop="@+id/imvApply"
+                      android:layout_alignBottom="@+id/imvApply"
+                      android:layout_toLeftOf="@+id/imvApply"
+                      android:layout_toRightOf="@+id/imvClose"
+                      android:layout_height="wrap_content">
+            <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/imvDraw"
+                    android:src="@drawable/icon_draw_size"
+                    android:padding="@dimen/padding_large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+            <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/imvColor"
+                    android:src="@drawable/icon_color"
+                    android:padding="@dimen/padding_large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <android.support.v4.view.ViewPager
+                android:adapter="@{viewModel.pagerAdapter}"
+                android:layout_centerVertical="true"
+                android:id="@+id/vpDraw"
+                android:layout_below="@+id/imvClose"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_rcv_130">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+</layout>
