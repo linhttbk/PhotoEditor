@@ -26,6 +26,7 @@ android {
         }
     }
 
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {
@@ -46,4 +47,8 @@ dependencies {
     implementation project(":sticker")
 
     implementation "com.github.mancj:SlideUp-Android:2.2.8"
+
+
+
+
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.data.model.Blend"/>
+
+        <variable name="updateImage" type="Boolean"/>
+        <variable name="path" type="java.lang.String"/>
+        <variable name="blendPath" type="java.lang.String"/>
+    </data>
+    <RelativeLayout
+            android:padding="@dimen/padding_normal"
+            android:background="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                app:blendItem="@{viewModel}"
+                android:background="@drawable/img_blend_selector"
+                android:layout_centerInParent="true"
+                android:padding="2dp"
+                android:id="@+id/rlBlend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:adjustViewBounds="true"
+                    app:blendItem="@{viewModel}"
+                    app:path="@{path}"
+                    app:blendPath="@{blendPath}"
+                    android:id="@+id/gpuBlend"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/item_blend_size_60dp"
+                    android:layout_height="@dimen/item_blend_size_60dp"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_marginTop="@dimen/margin_big"
+                android:layout_below="@+id/rlBlend"
+                app:blendItem="@{viewModel}"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:id="@+id/tvTitle"
+                android:textSize="@dimen/text_size_tiny"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</layout>

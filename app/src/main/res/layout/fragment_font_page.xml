@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.text.TextStickViewModel"/>
+
+    </data>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcvFont"
+            android:adapter="@{viewModel.fontAdapter}"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_height_250"/>
+</layout>

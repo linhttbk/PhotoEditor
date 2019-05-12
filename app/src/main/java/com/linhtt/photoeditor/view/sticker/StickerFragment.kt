@@ -2,6 +2,7 @@ package com.linhtt.photoeditor.view.sticker
 
 import com.example.core.BaseFragment
 import com.linhtt.photoeditor.R
+import com.linhtt.photoeditor.view.editor.EditActivity
 import kotlinx.android.synthetic.main.fragment_sticker.*
 import org.koin.android.viewmodel.ext.android.viewModelByClass
 import org.koin.core.parameter.parametersOf
@@ -38,5 +39,10 @@ class StickerFragment :
 
     override fun initViewModel(): Lazy<StickerViewModel> {
         return viewModelByClass(StickerViewModel::class) { parametersOf(fragmentManager) }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as EditActivity).showEditorView(false)
     }
 }

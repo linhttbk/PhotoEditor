@@ -2,6 +2,7 @@
     <string name="app_name">PhotoEditor</string>
     <string name="image_lbl_home">Hình ảnh</string>
     <string name="deviation_lbl_home">Ghép ảnh</string>
+    <string name="setting_lbl_home">Cài đặt</string>
     <string name="camera_lbl_home">Máy ảnh</string>
 
 
@@ -17,6 +18,7 @@
     <string name="ratio_916">9:16</string>
     <string name="ratio_169">16:9</string>
     <string name="msg_not_granted_permision">Vui lòng cho phép quyền đọc bộ nhớ để có thể sử dụng ứng dụng!</string>
+    <string name="msg_not_granted_permision_camera">Vui lòng cho phép quyền sử dụng camera để có thể sử dụng ứng dụng!</string>
     <string name="msg_close_snackbar">Đóng</string>
 
 
@@ -32,6 +34,8 @@
     <string name="lbl_add_text">Văn bản</string>
     <string name="lbl_body_tatoo">Thân hình</string>
     <string name="lbl_draw">Vẽ</string>
+    <string name="lbl_edge">Cạnh</string>
+    <string name="lbl_shadow">Bóng</string>
     <string name="lbl_add_image">Thêm</string>
     <!--adjust-->
     <string name="adjust_brightness_lbl">Độ sáng</string>
@@ -40,4 +44,15 @@
     <string name="adjust_saturation_lbl">Saturation</string>
     <string name="adjust_hue_lbl">Hue</string>
     <string name="adjust_sharpen_lbl">Sharpen</string>
+    <string name="adjust_pixel_lbl">Pixel</string>
+    <string name="adjust_vignette_lbl">Vignette</string>
+    <string name="adjust_swirl_lbl">Swirl</string>
+    <string name="blend_normal_lbl">Normal</string>
+    <string name="blend_difference_lbl">Difference</string>
+    <string name="blend_source_over_lbl">Source Over</string>
+    <string name="blend_color_burn_lbl">Color Burn</string>
+    <string name="blend_color_dodge_lbl">Color Dodge</string>
+    <string name="blend_darken_lbl">Darken</string>
+    <string name="blend_exclusion_lbl">Exclusion</string>
+    <string name="gallery_lbl">Bo suu tap</string>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.text.TextStickViewModel"/>
+    </data>
+    <RelativeLayout
+            android:background="@color/bg_add_text_fragment"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+                android:src="@drawable/ic_close"
+                android:id="@+id/imvCancel"
+                android:padding="@dimen/padding_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <ImageView
+                android:src="@drawable/ic_apply"
+                android:layout_alignParentRight="true"
+                android:id="@+id/imvApply"
+                android:padding="@dimen/padding_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <EditText
+                android:id="@+id/edtText"
+                android:textCursorDrawable="@color/white"
+                android:background="@null"
+                android:textSize="@dimen/text_size_title"
+                android:textColor="@color/white"
+                android:text="@{viewModel.text}"
+                android:gravity="center"
+                android:layout_below="@+id/imvCancel"
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</layout>

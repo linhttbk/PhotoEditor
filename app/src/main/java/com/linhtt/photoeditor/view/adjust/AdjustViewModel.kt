@@ -11,7 +11,7 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter
 class AdjustViewModel : BaseViewModel() {
     val adapter = AdjustmentAdapter(initFilter2())
     var currentFilter: GPUImageFilter? = null
-    var filterAdjuster: GPUImageFilterTools.FilterAdjuster? = null
+
 
     private fun initFilter2(): ArrayList<Adjustment> {
         val result = ArrayList<Adjustment>()
@@ -31,25 +31,23 @@ class AdjustViewModel : BaseViewModel() {
                 R.string.adjust_saturation_lbl
             )
         )
+        result.add(Adjustment(R.drawable.icon_hue, R.drawable.icon_hue_active, R.string.adjust_hue_lbl))
+        result.add(Adjustment(R.drawable.icon_sharpen, R.drawable.icon_sharpen_active, R.string.adjust_sharpen_lbl))
+        result.add(Adjustment(R.drawable.icon_pixel, R.drawable.icon_pixel_active,R.string.adjust_pixel_lbl))
+        result.add(Adjustment(R.drawable.icon_vignette, R.drawable.icon_vignette_active,R.string.adjust_vignette_lbl))
+        result.add(Adjustment(R.drawable.icon_swirl, R.drawable.icon_swirl_active,R.string.adjust_swirl_lbl))
         return result
     }
 
     fun selectedFilter(filter: GPUImageFilter, shareViewModel: EditorViewModel) {
-        currentFilter = shareViewModel.addFilterToGroup(filter)
-        filterAdjuster = GPUImageFilterTools.FilterAdjuster(currentFilter!!)
+         shareViewModel.addFilterToGroup(filter)
     }
 
-    fun adjust(percent: Int): Boolean {
-        if (filterAdjuster != null && filterAdjuster!!.canAdjust()) {
-            filterAdjuster!!.adjust(percent)
-            return true
-        }
-        return false
+    fun adjust(percent: Int,shareViewModel: EditorViewModel): Boolean {
+        return shareViewModel.adjust(percent)
     }
 
     fun updateAdjustUser(shareViewModel: EditorViewModel, percent: Int) {
-        if (currentFilter != null) {
-            shareViewModel.listFilter[currentFilter!!.javaClass.name] = percent
-        }
+            shareViewModel.updateAdjustUser(percent)
     }
 }

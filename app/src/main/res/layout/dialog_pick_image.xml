@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+    <data>
+        <variable name="viewModel" type="com.linhtt.photoeditor.view.blend.BlendViewModel"/>
+    </data>
+    <RelativeLayout
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_height_250">
+        <TextView
+                android:padding="@dimen/margin_normal"
+                android:id="@+id/tvFolder"
+                android:drawableRight="@drawable/ic_down"
+                android:textSize="@dimen/text_size_title"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <ImageView
+                android:padding="@dimen/margin_normal"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <android.support.v7.widget.RecyclerView
+                android:adapter="@{viewModel.photoAdapter}"
+                android:layout_below="@+id/tvFolder"
+                android:id="@+id/rcvImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        <android.support.v7.widget.RecyclerView
+                android:visibility="gone"
+                android:adapter="@{viewModel.folderAdapter}"
+                android:layout_below="@+id/tvFolder"
+                android:id="@+id/rcvFolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </RelativeLayout>
+</layout>
